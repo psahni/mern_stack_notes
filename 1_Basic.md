@@ -1,3 +1,8 @@
+
+### Why Frameworks?
+Frameworks provide things like routing, data fetching, and server-side rendering out of the box, which is something you need to set in react code yourself
+
+
 ### React Basic Philosophy
 * Component based architecture
 

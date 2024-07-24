@@ -73,3 +73,148 @@ action.js, reducer.js, actionTypes.js
 
 * Or you can create one file for each entity and have everything in it (DUCK module)
 
+
+
+### Redux Toolkit
+
+* Officially recommended by React doc
+
+* Automatically enables devTools
+
+* Redux-toolkit is a very popular and powerful library for simplifying the redux code and it is officially recommended by Redux.
+
+* Redux-toolkit has a lot of methods configure store, createAction, createReducer and createSlice.
+configureStore method is used to create a redux store and it will automatically configure redux-devTools with it. So we don’t need to use devtoolsEnhancer function.
+
+* Then we see createAction method, which is used to create an action object with payload property
+
+```js
+import { createAction } from '@reduxjs/toolkit';
+ 
+const addTask = createAction('ADD_TASK');
+console.log(addTask({ task: 'Add new task!' }));
+ 
+// Output in console
+{ type: 'ADD_TASK', payload: { task: 'Add new task!' } }
+
+```
+- Then we see createReducer function, which is used to create the reducer function without writing switch case or If..else.
+
+- And at the end, we have createSlice function, which is used to create actions and reducers in one function. This is very useful for making our code clean and maintainable.
+
+```js
+import { createSlice } from "@reduxjs/toolkit";
+let id = 0;
+
+const taskSlice = createSlice({
+   name: "tasks",
+   initialState: [],
+   reducers: {
+       // action: function
+       addTask: (state, action) => {
+           state.push({
+               id: ++id,
+               task: action.payload.task,
+               completed: false,
+           });
+       },
+       removeTask: (state, action) => {
+           const index = state.findIndex(
+               (task) => task.id === action.payload.id
+           );
+           state.splice(index, 1);
+       },
+       completedTask: (state, action) => {
+           const index = state.findIndex(
+               (task) => task.id === action.payload.id
+           );
+           state[index].completed = true;
+       },
+   },
+});
+
+export const { addTask, removeTask, completedTask } = taskSlice.actions;
+export default taskSlice.reducer;
+
+```
+
+* If we are using redux-toolkit, then we can combine reducers like an object.
+
+
+```js
+
+import { configureStore } from "@reduxjs/toolkit";
+import employeeReducer from "./employees";
+import taskReducer from "./tasks";
+ 
+const store = configureStore({
+   reducer: {
+       tasks: taskReducer,
+       employees: employeeReducer,
+   },
+});
+ 
+export default store;
+
+```
+
+### Configure Store React-Redux Way
+```js
+  <Provider store={store}>
+      <App />
+  </Provider>
+```
+
+### Use store in functional components
+
+* useSelector
+* useDispatch
+
+### Middleware
+
+- Log an action dispatch
+- Middleware is between action and reducer
+
+* In this section, we see the important concept of Redux which is middleware
+
+#### Purpose of Middleware
+- Middleware is a function that runs after our action gets dispatched and before it reaches the reducer.
+- Middleware is sometimes so useful if we want to do something after action gets dispatched like
+- Logging the actions
+- Showing the errors
+- Calling an API
+- If we are using the redux toolkit for our redux code then by default we get some middleware in our applications.
+
+* For creating middleware, we write this code in a new file.
+
+```js
+const log = (store) => (next) => (action) => {
+   console.log(action);
+   next(action); // This will pass action to next middleware or reducer
+};
+ 
+export default log;
+```
+
+* After we create middleware, we have to add that middleware in the configureStore function.
+
+```js
+import { configureStore } from "@reduxjs/toolkit";
+import employeeReducer from "./employees";
+import taskReducer from "./tasks";
+import log from "../middleware/log";
+ 
+const store = configureStore({
+   reducer: {
+       tasks: taskReducer,
+       employees: employeeReducer,
+   },
+   middleware: (getDefaultMiddleware) => [
+       ...getDefaultMiddleware(),
+       log, // Order of this middleware matters
+   ],
+});
+ 
+export default store;
+
+```
