@@ -13,10 +13,12 @@ export default function Table({ children }) {
 
 // Usage:-
 <Table>
-        <tr>
-            <td>
-            <button onClick={toggleCollapse}>Closed</button>
-            </td>
-            <td>CollapsedContent</td>
-          </tr>
+  <tr>
+      <td>
+      <button onClick={toggleCollapse}>Closed</button>
+      </td>
+      <td>CollapsedContent</td>
+    </tr>
 </Table>
+
+// U created rows and cols, not header can be added in the parent component

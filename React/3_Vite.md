@@ -16,3 +16,7 @@ $ yarn
 ```
 $ yarn dev
 ```
+
+### Tsconfig issue with Vite
+* https://dev.to/willochs316/how-to-fix-absolute-path-not-working-in-vite-project-react-ts-3aj9
+

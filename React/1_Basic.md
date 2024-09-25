@@ -36,6 +36,14 @@ The react architectures brilliance lies in this balance of stateful and stateles
 
 * The diffing algorithm compares the new Virtual DOM with the old one to apply only the necessary updates, further enhancing performance.
 
+
+### Reconcilation
+
+Diffing Algorithm
+
+### React Fiber
+
+
 ### Implementation
 
 Identify the components
@@ -45,5 +53,29 @@ Data is flowed from parent to child
 You can use callback passed to child components, to update the state in parent
 
 
+### Component Life Cycle
 
+* componentDidMount()
+The `componentDidMount()` method runs after the component output has been rendered to the DOM. This is a good place to set up a timer
+
+
+* componentWillUnmount()
+ It is used to perform cleanup actions before a component is removed from the DOM
+
+
+* componentWillUpdate()
+componentWillUpdate() is a lifecycle method in React that gets called just before a component's update cycle starts. It receives the next prop and state as arguments and allows you to perform any necessary actions before the component updates.
+
+* componentDidUpdate()
+The componentDidUpdate() method is a lifecycle method in React that is called after a component has been updated and re-rendered. It is useful for performing side effects or additional operations when the component's props or state have changed.
+
+* getDerivedStateFromProps()
+
+getDerivedStateFromProps() is a lifecycle method available in React 16.3 and later versions that is invoked during the mounting and updating phase of a component.
+
+During the mounting phase, getDerivedStateFromProps() is called after the constructor and before render(). This method is called for every render cycle and provides an opportunity to update the component's state based on changes in props before the initial render.
+
+
+* shouldComponentUpdate 
+It determines whether a component should re-render or not
 
