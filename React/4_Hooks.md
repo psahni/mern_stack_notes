@@ -104,3 +104,6 @@ function App() {
 
 In this example, the MyComponent is wrapped with React.memo. When the App component re-renders due to the count state change, MyComponent will only re-render if its message prop has changed. If the message prop remains the same, MyComponent will use the memoized result, which can improve performance, especially for expensive render operations.
 
+
+
+
