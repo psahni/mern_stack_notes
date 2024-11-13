@@ -1,5 +1,17 @@
 ### React Hooks
 
+#### When to Use Hooks
+
+* Hooks are best when you need to share logic like fetching data, handling events, or managing state without adding extra nesting to the component tree.
+Avoiding Wrapper Hell:
+
+* Hooks simplify the component tree, avoiding the “wrapper hell” that can occur with nested HOCs, making the code easier to read and debug.
+Composing Multiple Pieces of Logic:
+
+* Hooks are highly composable and can be combined directly within a component, enabling you to build complex functionality by stacking hooks like useEffect, useMemo, useReducer, or custom hooks.
+
+* For any functional component, hooks are the primary method of handling state, side effects, and lifecycle events, and they can keep the code lightweight and more readable.
+
 - Allows functional components to use React features without using class components
 (useState, useEffect)
 
