@@ -69,4 +69,4 @@ Note: Only use ARIA when no native HTML semantic element exists.
 ### Patterns
 
 https://www.w3.org/WAI/ARIA/apg/patterns/
-https://www.w3.org/WAI/fundamentals/accessibility-intro/#what
+https://www.w3.org/WAI/fundamentals/accessibility-intro/
