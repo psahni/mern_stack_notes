@@ -1,6 +1,8 @@
 ### Definition
 
-Accessibility in front-end development refers to the practice of creating websites and applications that are usable by everyone, including individuals with disabilities. This encompasses a range of impairments, including visual, auditory, motor, and cognitive disabilities. Ensuring accessibility is not just a technical requirement; it promotes inclusivity and allows all users to interact with digital content effectively.
+Accessibility in front-end development refers to the practice of creating websites and applications that are usable by everyone, including individuals with disabilities.
+This encompasses a range of impairments, including visual, auditory, motor, and cognitive disabilities.
+Ensuring accessibility is not just a technical requirement; it promotes inclusivity and allows all users to interact with digital content effectively.
 
 ### Accessibility Checklist
 

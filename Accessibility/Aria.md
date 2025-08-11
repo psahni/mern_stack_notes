@@ -56,10 +56,10 @@ Note: Only use ARIA when no native HTML semantic element exists.
 ### Best Practices
 
 - Use Native HTML First
-- Prefer <button> over <div role="button">.
+- Prefer `<button>` over `<div role="button">`.
 
 * Do Not Overuse ARIA
-  Avoid adding role="button" to an actual <button> element.
+  Avoid adding `role="button"` to an actual `<button>` element.
 
 - Combine ARIA with Keyboard Accessibility
   `<div role="button" tabindex="0">Click Me</div>`
