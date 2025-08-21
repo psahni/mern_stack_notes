@@ -83,6 +83,10 @@ It determines whether a component should re-render or not
 ### React's Execution Flow:
 
 **Render Phase**: Component function runs, `useEffect` calls are recorded (not executed)
+
 **Commit Phase**: React updates DOM
+
 **Effect Phase**: Queued effects execute asynchronously after paint
+
 **Cleanup Phase**: Previous cleanup functions run before new effects
+
