@@ -117,5 +117,49 @@ function App() {
 In this example, the MyComponent is wrapped with React.memo. When the App component re-renders due to the count state change, MyComponent will only re-render if its message prop has changed. If the message prop remains the same, MyComponent will use the memoized result, which can improve performance, especially for expensive render operations.
 
 
+### useLayoutEffect
+
+useLayoutEffect is a version of useEffect that fires before the browser repaints the screen.
 
 
+
+React guarantees that the code inside useLayoutEffect and any state updates scheduled inside it will be processed before the browser repaints the screen. This lets you render the tooltip, measure it, and re-render the tooltip again without the user noticing the first extra render. In other words, useLayoutEffect blocks the browser from painting.
+
+
+
+The purpose of useLayoutEffect is to let your component use layout information for rendering:
+
+Render the initial content.
+Measure the layout before the browser repaints the screen.
+Render the final content using the layout information you’ve read.
+
+
+`useLayoutEffect` runs synchronously after DOM mutations but before browser paint, unlike useEffect which runs after paint.
+Key Differences:
+
+* Timing: useLayoutEffect blocks paint, useEffect doesn't
+* Use case: DOM measurements/mutations vs general side effects
+* Performance: useLayoutEffect can hurt performance if overused
+
+### When to Use useLayoutEffect:
+
+* DOM measurements (getBoundingClientRect, scrollHeight)
+* Preventing visual flicker when updating styles
+* Tooltip positioning based on element size
+* Auto-scrolling to elements
+
+### Execution Order:
+
+`Render → 2. DOM commit → 3. useLayoutEffect → 4. Paint → 5. useEffect`
+
+The demo above shows the visual difference - try toggling the useEffect box to see flicker vs the smooth useLayoutEffect box.
+Rule of thumb: Start with useEffect (95% of cases). Only use useLayoutEffect when you need synchronous DOM operations before paint.
+
+### useTransition
+
+useTransition is a React hook that lets you mark state updates as non-urgent, preventing them from blocking the UI during heavy computations.
+
+### useAction
+Used for form submissions
+
+[Link](https://blog.logrocket.com/react-useactionstate/)
